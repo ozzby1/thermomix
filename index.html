@@ -17,7 +17,9 @@
       --accent: #1f6fff;
       --accent-2: #7c3aed;
       --accent-soft: rgba(31,111,255,0.10);
+      --warm-soft: rgba(185, 119, 69, 0.10);
       --success-soft: rgba(25, 135, 84, 0.10);
+      --danger-soft: rgba(220, 53, 69, 0.08);
       --shadow: 0 20px 50px rgba(16, 24, 40, 0.10);
       --shadow-soft: 0 10px 30px rgba(16, 24, 40, 0.06);
       --radius-xl: 32px;
@@ -214,7 +216,15 @@
     .compare-wrap,
     .feature-banner,
     .cta,
-    .image-placeholder {
+    .image-placeholder,
+    .decision-box,
+    .replacement-list,
+    .timeline-card,
+    .cookidoo-step,
+    .buy-faq-item,
+    .reasons-card,
+    .day-card,
+    .proscons-box {
       border-radius: var(--radius-lg);
       border: 1px solid rgba(255,255,255,0.72);
       background: var(--surface);
@@ -222,16 +232,12 @@
       box-shadow: var(--shadow);
     }
 
-    .mini-card {
-      padding: 16px;
-    }
-
+    .mini-card { padding: 16px; }
     .mini-label {
       color: var(--muted);
       font-size: 0.85rem;
       margin-bottom: 6px;
     }
-
     .mini-value {
       font-size: 1.15rem;
       font-weight: 800;
@@ -280,12 +286,9 @@
       background: radial-gradient(circle, rgba(124,58,237,0.16), transparent 68%);
     }
 
-    .section {
-      padding: 44px 0;
-    }
-
+    .section { padding: 44px 0; }
     .section-head {
-      max-width: 820px;
+      max-width: 860px;
       margin-bottom: 28px;
     }
 
@@ -317,11 +320,17 @@
       gap: 22px;
     }
 
-    .card, .tip, .quote, .faq-item {
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card, .tip, .quote, .faq-item, .buy-faq-item, .reasons-card, .day-card {
       padding: 24px;
     }
 
-    .card p, .tip p, .quote p, .faq-item p { margin: 0; color: #465163; }
+    .card p, .tip p, .quote p, .faq-item p, .buy-faq-item p, .reasons-card p, .day-card p { margin: 0; color: #465163; }
 
     .icon {
       width: 50px;
@@ -377,10 +386,90 @@
       letter-spacing: -0.03em;
     }
 
-    .compare-wrap {
-      overflow: hidden;
+    .decision-box { padding: 26px; }
+    .decision-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
     }
 
+    .decision-item {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(22,32,49,0.06);
+      color: #445062;
+    }
+
+    .decision-box.good .decision-item { background: var(--success-soft); }
+    .decision-box.maybe .decision-item { background: var(--danger-soft); }
+
+    .replacement-list { padding: 24px; }
+    .replacement-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .replacement-item {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(31,111,255,0.08);
+      font-weight: 700;
+      color: #2a3850;
+      text-align: center;
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .timeline-card { padding: 24px; }
+    .timeline-title {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .timeline-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .timeline-step {
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(22,32,49,0.06);
+    }
+
+    .timeline-step:last-child { border-bottom: 0; }
+
+    .timeline-time {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .timeline-text {
+      color: #465163;
+    }
+
+    .proscons-box { padding: 24px; }
+    .proscons-note {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.68);
+      color: #465163;
+    }
+
+    .compare-wrap { overflow: hidden; }
     table {
       width: 100%;
       border-collapse: collapse;
@@ -406,9 +495,7 @@
       transition: 0.22s ease;
     }
 
-    .recipe-card:hover {
-      transform: translateY(-4px);
-    }
+    .recipe-card:hover { transform: translateY(-4px); }
 
     .recipe-media {
       aspect-ratio: 4 / 3;
@@ -423,9 +510,7 @@
         #fff;
     }
 
-    .recipe-content {
-      padding: 22px;
-    }
+    .recipe-content { padding: 22px; }
 
     .tag-row {
       display: flex;
@@ -441,6 +526,56 @@
       font-weight: 700;
       color: var(--accent);
       background: rgba(31,111,255,0.10);
+    }
+
+    .cookidoo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .cookidoo-step { padding: 24px; }
+    .step-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      margin-bottom: 14px;
+      box-shadow: 0 10px 24px rgba(31,111,255,0.18);
+    }
+
+    .step-screen {
+      margin-top: 16px;
+      min-height: 180px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 18px;
+      color: var(--muted);
+      font-weight: 700;
+      background: linear-gradient(135deg, rgba(31,111,255,0.10), rgba(124,58,237,0.08));
+    }
+
+    .week-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .day-badge {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(31,111,255,0.10);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 800;
+      margin-bottom: 12px;
     }
 
     .quote {
@@ -470,7 +605,29 @@
       gap: 14px;
     }
 
-    .faq-item h3 { margin-bottom: 10px; }
+    .faq-item h3,
+    .buy-faq-item h3 { margin-bottom: 10px; }
+
+    .buy-faq-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .reasons-card {
+      text-align: center;
+      padding: 22px 18px;
+    }
+
+    .reasons-card .icon {
+      margin: 0 auto 12px;
+    }
 
     .cta {
       padding: 34px;
@@ -508,23 +665,26 @@
       .hero-shell,
       .grid-2,
       .grid-3,
+      .grid-4,
       .stats-row,
-      .hero-mini {
+      .hero-mini,
+      .timeline-grid,
+      .cookidoo-grid,
+      .buy-faq-grid,
+      .reasons-grid,
+      .week-grid,
+      .replacement-grid {
         grid-template-columns: 1fr;
       }
 
-      .image-placeholder {
-        min-height: 340px;
-      }
-
+      .image-placeholder { min-height: 340px; }
       h1 { max-width: 100%; }
     }
 
     @media (max-width: 860px) {
       .menu { display: none; }
-      .topbar {
-        border-radius: 22px;
-      }
+      .topbar { border-radius: 22px; }
+      .timeline-step { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -538,10 +698,10 @@
         </div>
         <nav class="menu">
           <a href="#o-tm7">O TM7</a>
+          <a href="#rozhodovani">Rozhodování</a>
           <a href="#umi">Co umí</a>
-          <a href="#specifikace">Specifikace</a>
+          <a href="#nahrazuje">Co nahradí</a>
           <a href="#inspirace">Inspirace</a>
-          <a href="#zkusenosti">Zkušenosti</a>
           <a href="#faq">FAQ</a>
         </nav>
         <a class="button secondary" href="#kontakt">Zjistit víc</a>
@@ -558,8 +718,8 @@
           Neberu ho jako další kuchyňský spotřebič navíc. Spíš jako věc, která mi pomáhá vařit klidněji, rychleji a s větší chutí zkoušet nové recepty. Na pečení, polévky, omáčky, těsta i rychlé večeře ho používám pořád – a právě proto jsem na jednu stránku sepsala vše, co bych o něm sama chtěla vědět.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="#o-tm7">Co všechno umí</a>
-          <a class="button secondary" href="#inspirace">Inspirace na jídla</a>
+          <a class="button primary" href="#rozhodovani">Zjistit, jestli je pro mě</a>
+          <a class="button secondary" href="#inspirace">Prohlédnout reálné použití</a>
         </div>
         <div class="hero-mini">
           <div class="mini-card">
@@ -610,6 +770,103 @@
       </div>
     </section>
 
+    <section id="rozhodovani" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Rozhodování před koupí</div>
+          <h2>Komu dává Thermomix TM7 smysl a kdo by si to měl promyslet</h2>
+          <p>
+            Tuhle část bych na podobném webu chtěla vidět vždycky. Pomůže totiž poznat, jestli člověk skutečně hledá pomocníka do kuchyně, nebo jen obdivuje hezký produkt zvenku.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="decision-box good">
+            <h3>Dává smysl hlavně tehdy, pokud</h3>
+            <div class="decision-list">
+              <div class="decision-item">vaříš několikrát týdně a chceš mít v kuchyni větší klid</div>
+              <div class="decision-item">máš ráda domácí jídlo, ale nechceš vytahovat pět různých spotřebičů</div>
+              <div class="decision-item">oceníš vedení krok za krokem a inspiraci, když dojdou nápady</div>
+              <div class="decision-item">chceš zkrátit přípravu i následný úklid</div>
+              <div class="decision-item">líbí se ti myšlenka, že jeden přístroj zastane více rolí</div>
+            </div>
+          </div>
+
+          <div class="decision-box maybe">
+            <h3>Možná to nebude ideální, pokud</h3>
+            <div class="decision-list">
+              <div class="decision-item">vaříš opravdu jen výjimečně a kuchyň skoro nevyužíváš</div>
+              <div class="decision-item">máš ráda výhradně klasické vaření bez technologií a nechceš na tom nic měnit</div>
+              <div class="decision-item">čekáš, že za tebe udělá úplně všechno bez jakékoliv přípravy</div>
+              <div class="decision-item">ti nevyhovuje vyšší počáteční investice</div>
+              <div class="decision-item">nehledáš pomocníka, ale spíš jen další zajímavý spotřebič</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cas" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Čas a pohodlí</div>
+          <h2>Jak vypadá běžné vaření bez Thermomixu a s ním</h2>
+          <p>
+            Nejde jen o minuty na hodinách. Jde i o pocit, kolik pozornosti, přepínání a nepořádku kolem vaření člověk musí řešit.
+          </p>
+        </div>
+
+        <div class="timeline-grid">
+          <div class="timeline-card">
+            <div class="timeline-title">Běžné vaření bez Thermomixu</div>
+            <div class="timeline-list">
+              <div class="timeline-step"><div class="timeline-time">0–10 min</div><div class="timeline-text">vytáhnout váhu, mixér, prkénko, hrnec a připravit suroviny</div></div>
+              <div class="timeline-step"><div class="timeline-time">10–25 min</div><div class="timeline-text">krájení, sekání, míchání a hlídání několika kroků zároveň</div></div>
+              <div class="timeline-step"><div class="timeline-time">25–45 min</div><div class="timeline-text">vaření, mixování, dochucení a přendávání mezi nádobami</div></div>
+              <div class="timeline-step"><div class="timeline-time">45+ min</div><div class="timeline-text">úklid více věcí a pocit, že i jednoduché jídlo bylo docela velká akce</div></div>
+            </div>
+          </div>
+
+          <div class="timeline-card">
+            <div class="timeline-title">Vaření s Thermomixem TM7</div>
+            <div class="timeline-list">
+              <div class="timeline-step"><div class="timeline-time">0–5 min</div><div class="timeline-text">připravit suroviny a rovnou je vážit při práci</div></div>
+              <div class="timeline-step"><div class="timeline-time">5–15 min</div><div class="timeline-text">nechat se vést receptem a neřešit tolik drobných kroků okolo</div></div>
+              <div class="timeline-step"><div class="timeline-time">15–30 min</div><div class="timeline-text">míchat, sekat, vařit nebo mixovat v jednom zařízení</div></div>
+              <div class="timeline-step"><div class="timeline-time">30+ min</div><div class="timeline-text">méně nádobí, menší chaos a celkově klidnější pocit z vaření</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nahrazuje" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Co v kuchyni zastoupí</div>
+          <h2>Co všechno mi v běžném provozu pomáhá nahradit</h2>
+          <p>
+            To je podle mě jedna z nejpraktičtějších částí celého rozhodování. Člověk si díky tomu lépe uvědomí, že nejde o jednu funkci, ale o kombinaci několika pomocníků v jednom zařízení.
+          </p>
+        </div>
+
+        <div class="replacement-list">
+          <h3>V každodenním používání mi často nahrazuje nebo omezuje potřebu používat</h3>
+          <div class="replacement-grid">
+            <div class="replacement-item">mixér</div>
+            <div class="replacement-item">kuchyňskou váhu</div>
+            <div class="replacement-item">sekáček</div>
+            <div class="replacement-item">parní hrnec</div>
+            <div class="replacement-item">část práce s klasickým hrncem</div>
+            <div class="replacement-item">pomocníka na těsta</div>
+            <div class="replacement-item">přístroj na kaše a krémy</div>
+            <div class="replacement-item">rychlé mixování omáček a pomazánek</div>
+            <div class="replacement-item">neustálé přendávání mezi nádobami</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="umi" class="section">
       <div class="container">
         <div class="section-head">
@@ -626,31 +883,26 @@
             <h3>Vaření na každý den</h3>
             <p>Polévky, omáčky, kaše, přílohy nebo rychlé večeře. Když mám den, kdy potřebuji vařit bez zbytečného přemýšlení, právě tady je Thermomix nejsilnější. Pomáhá mi držet postup a výsledky jsou díky tomu velmi spolehlivé.</p>
           </article>
-
           <article class="card">
             <div class="icon">🥖</div>
             <h3>Těsta a pečení</h3>
             <p>Na těsta jsem dřív často neměla náladu. Tady je to mnohem příjemnější. Těsto na pizza korpus, domácí pečivo, koláč nebo lívance mám připravené rychle a bez zbytečného nepořádku kolem.</p>
           </article>
-
           <article class="card">
             <div class="icon">🥗</div>
             <h3>Lehčí a zdravější jídla</h3>
             <p>Vaření v páře mi dává smysl hlavně ve dnech, kdy chci něco lehkého, ale ne nudného. Zelenina, ryby, knedlíčky nebo více věcí najednou – tohle je přesně typ vaření, který mi pomáhá mít dobrý pocit z jídla i z času v kuchyni.</p>
           </article>
-
           <article class="card">
             <div class="icon">🧅</div>
             <h3>Sekání, mixování a drcení</h3>
             <p>Cibule, ořechy, bylinky, pomazánky, pesta, smoothie nebo jemné krémy. Tady si člověk rychle zvykne na pohodlí, protože odpadá spousta malých kroků navíc.</p>
           </article>
-
           <article class="card">
             <div class="icon">⚖️</div>
             <h3>Vážení během práce</h3>
             <p>Nenápadná věc, kterou ale používám pořád. Když si mohu ingredience vážit rovnou při vaření, šetří mi to čas a zároveň je celý postup příjemně plynulý.</p>
           </article>
-
           <article class="card">
             <div class="icon">✨</div>
             <h3>Vaření krok za krokem</h3>
@@ -671,22 +923,10 @@
         </div>
 
         <div class="stats-row">
-          <div class="stat-box">
-            <div class="stat-label">Mixovací nádoba</div>
-            <div class="stat-value">2,2 l</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-label">Varoma systém</div>
-            <div class="stat-value">6,8 l</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-label">Displej</div>
-            <div class="stat-value">10"</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-label">Motor</div>
-            <div class="stat-value">500 W</div>
-          </div>
+          <div class="stat-box"><div class="stat-label">Mixovací nádoba</div><div class="stat-value">2,2 l</div></div>
+          <div class="stat-box"><div class="stat-label">Varoma systém</div><div class="stat-value">6,8 l</div></div>
+          <div class="stat-box"><div class="stat-label">Displej</div><div class="stat-value">10"</div></div>
+          <div class="stat-box"><div class="stat-label">Motor</div><div class="stat-value">500 W</div></div>
         </div>
 
         <div class="grid-2" style="margin-top: 22px;">
@@ -722,28 +962,98 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Displej</td>
-                <td>Větší a přehlednější</td>
-                <td>Lépe se v něm orientuje, recepty i ovládání jsou příjemnější na používání.</td>
-              </tr>
-              <tr>
-                <td>Vaření v páře</td>
-                <td>Více prostoru ve Varoma systému</td>
-                <td>Praktičtější pro rodinné vaření i více surovin najednou.</td>
-              </tr>
-              <tr>
-                <td>Celkový dojem</td>
-                <td>Modernější a klidnější používání</td>
-                <td>Působí promyšleněji a velmi příjemně při každodenním provozu.</td>
-              </tr>
-              <tr>
-                <td>Práce s recepty</td>
-                <td>Silné napojení na Cookidoo</td>
-                <td>Když dojdou nápady, inspirace je okamžitě po ruce.</td>
-              </tr>
+              <tr><td>Displej</td><td>Větší a přehlednější</td><td>Lépe se v něm orientuje, recepty i ovládání jsou příjemnější na používání.</td></tr>
+              <tr><td>Vaření v páře</td><td>Více prostoru ve Varoma systému</td><td>Praktičtější pro rodinné vaření i více surovin najednou.</td></tr>
+              <tr><td>Celkový dojem</td><td>Modernější a klidnější používání</td><td>Působí promyšleněji a velmi příjemně při každodenním provozu.</td></tr>
+              <tr><td>Práce s recepty</td><td>Silné napojení na Cookidoo</td><td>Když dojdou nápady, inspirace je okamžitě po ruce.</td></tr>
             </tbody>
           </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="nevyhody" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Upřímně</div>
+          <h2>Co mi na něm ze začátku úplně nesedlo</h2>
+          <p>
+            Tohle je podle mě důležité říct nahlas. Právě tahle část dává stránce důvěru, protože žádný produkt není kouzelná hůlka bez kompromisů.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="proscons-box">
+            <h3>Vyšší cena</h3>
+            <p>Je to investice a není malá. Právě proto podle mě dává smysl hlavně lidem, kteří opravdu vaří a chtějí ho používat pravidelně.</p>
+            <div class="proscons-note">Pro mě se jeho hodnota ukazuje hlavně v tom, jak často ho zapínám a kolik běžných kroků mi zjednodušuje.</div>
+          </div>
+          <div class="proscons-box">
+            <h3>Je potřeba si zvyknout</h3>
+            <p>Prvních pár dnů je člověk spíš ve fázi seznamování. Je normální, že si musí najít svůj rytmus a zjistit, na co ho bude používat nejčastěji.</p>
+            <div class="proscons-note">Jakmile si sedne první rutina, začne celý přístroj působit mnohem přirozeněji.</div>
+          </div>
+          <div class="proscons-box">
+            <h3>Není to vaření bez práce</h3>
+            <p>Pořád je potřeba připravit suroviny, ochutnávat a rozhodovat. Jen je celý proces klidnější, přehlednější a často rychlejší.</p>
+            <div class="proscons-note">Právě to mi ale vyhovuje – pořád mám pocit domácího vaření, jen bez zbytečného chaosu.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tyden" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">7 dní s TM7</div>
+          <h2>Jak by mohl vypadat první týden používání</h2>
+          <p>
+            Tohle je přesně typ obsahu, který bych před koupí chtěla číst. Pomůže totiž představit si, jestli by se Thermomix opravdu stal součástí běžného života.
+          </p>
+        </div>
+
+        <div class="week-grid">
+          <article class="day-card"><div class="day-badge">Den 1</div><h3>Krémová polévka</h3><p>První kontakt bývá ideální přes něco jednoduchého. Právě u polévky člověk rychle pochopí, jak pohodlné je mít vaření a mixování v jednom kroku.</p></article>
+          <article class="day-card"><div class="day-badge">Den 2</div><h3>Těsto na pizzu</h3><p>Druhý den hezky ukáže, že nejde jen o vaření, ale i o přípravu těst. Člověk začne vnímat, jak moc to šetří energii kolem pečení.</p></article>
+          <article class="day-card"><div class="day-badge">Den 3</div><h3>Pomazánka nebo pesto</h3><p>Rychlá věc na pár minut, ale přesně na ní je vidět, že Thermomix není jen na velké recepty. Často pomůže i u drobností během dne.</p></article>
+          <article class="day-card"><div class="day-badge">Den 4</div><h3>Vaření v páře</h3><p>Tady člověk zjistí, že lehčí a jednodušší jídla nemusí být nudná. Navíc je to velmi příjemné na běžné pracovní dny.</p></article>
+          <article class="day-card"><div class="day-badge">Den 5</div><h3>Omáčka nebo risotto</h3><p>Pátý den už začíná být znát, že vedení krok za krokem snižuje stres z jídel, která by člověk jinak dělal jen občas.</p></article>
+          <article class="day-card"><div class="day-badge">Den 6</div><h3>Dezert nebo sladká snídaně</h3><p>Tohle je den, kdy si člověk uvědomí, že Thermomix není jen praktický, ale umí být i radostná součást kuchyně.</p></article>
+          <article class="day-card"><div class="day-badge">Den 7</div><h3>Rodinný oběd</h3><p>Na konci týdne už bývá jasnější, jestli si s přístrojem člověk sedl. Pokud ano, začne ho brát jako běžnou součást kuchyňské rutiny.</p></article>
+          <article class="day-card"><div class="day-badge">Po týdnu</div><h3>První reálný dojem</h3><p>Nejčastější pocit podle mě bývá ten, že vaření je méně roztříštěné, kuchyň klidnější a člověk má větší chuť dělat domácí jídlo častěji.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cookidoo" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Jak to funguje</div>
+          <h2>Jak vypadá vaření přes displej a proč je to tak pohodlné</h2>
+          <p>
+            Tahle část podle mě hodně pomáhá lidem, kteří si neumí představit, co vlastně znamená vaření krok za krokem v praxi.
+          </p>
+        </div>
+
+        <div class="cookidoo-grid">
+          <div class="cookidoo-step">
+            <div class="step-number">1</div>
+            <h3>Vybereš si recept podle nálady</h3>
+            <p>Když nevím, co vařit, právě tady je největší síla celého systému. Člověk nemusí složitě přemýšlet, jen si vybere, na co má chuť.</p>
+            <div class="step-screen">MÍSTO PRO SCREENSHOT<br />výběr receptu / kategorie / filtry</div>
+          </div>
+          <div class="cookidoo-step">
+            <div class="step-number">2</div>
+            <h3>Displej tě vede krok za krokem</h3>
+            <p>Nemusím koukat do telefonu, vracet se v receptu ani odhadovat další krok. Všechno je přehledné a celé vaření je klidnější.</p>
+            <div class="step-screen">MÍSTO PRO SCREENSHOT<br />postup receptu / čas / ingredience</div>
+          </div>
+          <div class="cookidoo-step">
+            <div class="step-number">3</div>
+            <h3>Máš větší jistotu výsledku</h3>
+            <p>Právě to je pro mě jeden z největších rozdílů. I u receptů, které bych normálně dělala s nejistotou, mám pocit, že vše běží mnohem jistěji.</p>
+            <div class="step-screen">MÍSTO PRO SCREENSHOT<br />dokončení receptu / servírování / hotové jídlo</div>
+          </div>
         </div>
       </div>
     </section>
@@ -761,80 +1071,27 @@
         <div class="grid-3">
           <article class="recipe-card">
             <div class="recipe-media">MÍSTO PRO OBRÁZEK<br />Krémová polévka / sezónní zelenina</div>
-            <div class="recipe-content">
-              <h3>Polévky, které jsou hotové bez zmatku</h3>
-              <p>U polévek mám nejraději to, že všechno probíhá plynule. Orestovat, povařit, rozmixovat a dochutit na jednom místě je přesně ten typ pohodlí, na který si člověk rychle zvykne.</p>
-              <div class="tag-row">
-                <span class="tag">rychlá večeře</span>
-                <span class="tag">krémové polévky</span>
-                <span class="tag">minimum nádobí</span>
-              </div>
-            </div>
+            <div class="recipe-content"><h3>Polévky, které jsou hotové bez zmatku</h3><p>U polévek mám nejraději to, že všechno probíhá plynule. Orestovat, povařit, rozmixovat a dochutit na jednom místě je přesně ten typ pohodlí, na který si člověk rychle zvykne.</p><div class="tag-row"><span class="tag">rychlá večeře</span><span class="tag">krémové polévky</span><span class="tag">minimum nádobí</span></div></div>
           </article>
-
           <article class="recipe-card">
             <div class="recipe-media">MÍSTO PRO OBRÁZEK<br />Domácí pečivo / pizza / těsto</div>
-            <div class="recipe-content">
-              <h3>Těsta, do kterých se mi konečně chce</h3>
-              <p>Domácí pečení mám ráda, ale ne vždy mám energii na přípravu od začátku do konce. Tady mi Thermomix pomáhá hlavně s jistotou, že těsto bude mít správnou konzistenci a že všechno půjde rychleji.</p>
-              <div class="tag-row">
-                <span class="tag">pizza</span>
-                <span class="tag">domácí pečivo</span>
-                <span class="tag">sladké i slané</span>
-              </div>
-            </div>
+            <div class="recipe-content"><h3>Těsta, do kterých se mi konečně chce</h3><p>Domácí pečení mám ráda, ale ne vždy mám energii na přípravu od začátku do konce. Tady mi Thermomix pomáhá hlavně s jistotou, že těsto bude mít správnou konzistenci a že všechno půjde rychleji.</p><div class="tag-row"><span class="tag">pizza</span><span class="tag">domácí pečivo</span><span class="tag">sladké i slané</span></div></div>
           </article>
-
           <article class="recipe-card">
             <div class="recipe-media">MÍSTO PRO OBRÁZEK<br />Vaření v páře / zelenina / ryba</div>
-            <div class="recipe-content">
-              <h3>Lehčí jídla, která nejsou nudná</h3>
-              <p>Vaření v páře pro mě není jen „zdravá varianta“. Je to způsob, jak udělat dobré a svěží jídlo bez zbytečné těžkosti. Často po něm sahám přes týden, když chci něco jednoduchého a dobrého zároveň.</p>
-              <div class="tag-row">
-                <span class="tag">vaření v páře</span>
-                <span class="tag">lehké obědy</span>
-                <span class="tag">více úrovní</span>
-              </div>
-            </div>
+            <div class="recipe-content"><h3>Lehčí jídla, která nejsou nudná</h3><p>Vaření v páře pro mě není jen „zdravá varianta“. Je to způsob, jak udělat dobré a svěží jídlo bez zbytečné těžkosti. Často po něm sahám přes týden, když chci něco jednoduchého a dobrého zároveň.</p><div class="tag-row"><span class="tag">vaření v páře</span><span class="tag">lehké obědy</span><span class="tag">více úrovní</span></div></div>
           </article>
-
           <article class="recipe-card">
             <div class="recipe-media">MÍSTO PRO OBRÁZEK<br />Pomazánky / dipy / pesta</div>
-            <div class="recipe-content">
-              <h3>Malé věci, které dělají velký rozdíl</h3>
-              <p>Právě pomazánky, domácí pesto nebo rychlé dipy mi ukázaly, jak často Thermomix využiji i mimo hlavní vaření. Někdy stačí pár minut a je hotovo něco, co chutná opravdu domácím způsobem.</p>
-              <div class="tag-row">
-                <span class="tag">pomazánky</span>
-                <span class="tag">pesto</span>
-                <span class="tag">rychlé recepty</span>
-              </div>
-            </div>
+            <div class="recipe-content"><h3>Malé věci, které dělají velký rozdíl</h3><p>Právě pomazánky, domácí pesto nebo rychlé dipy mi ukázaly, jak často Thermomix využiji i mimo hlavní vaření. Někdy stačí pár minut a je hotovo něco, co chutná opravdu domácím způsobem.</p><div class="tag-row"><span class="tag">pomazánky</span><span class="tag">pesto</span><span class="tag">rychlé recepty</span></div></div>
           </article>
-
           <article class="recipe-card">
             <div class="recipe-media">MÍSTO PRO OBRÁZEK<br />Dezert / kaše / snídaně</div>
-            <div class="recipe-content">
-              <h3>Snídaně a sladké, když chci něco navíc</h3>
-              <p>Není to jen o hlavních jídlech. Kaše, domácí krémy, pudinky, sladká těsta nebo dezerty mi pomáhají využít Thermomix i ve chvílích, kdy si chci jen udělat radost.</p>
-              <div class="tag-row">
-                <span class="tag">snídaně</span>
-                <span class="tag">dezerty</span>
-                <span class="tag">rychlá sladká tečka</span>
-              </div>
-            </div>
+            <div class="recipe-content"><h3>Snídaně a sladké, když chci něco navíc</h3><p>Není to jen o hlavních jídlech. Kaše, domácí krémy, pudinky, sladká těsta nebo dezerty mi pomáhají využít Thermomix i ve chvílích, kdy si chci jen udělat radost.</p><div class="tag-row"><span class="tag">snídaně</span><span class="tag">dezerty</span><span class="tag">rychlá sladká tečka</span></div></div>
           </article>
-
           <article class="recipe-card">
             <div class="recipe-media">MÍSTO PRO OBRÁZEK<br />Cookidoo / displej / recepty</div>
-            <div class="recipe-content">
-              <h3>Když dojdou nápady, inspirace je hned po ruce</h3>
-              <p>To je za mě jedna z nejsilnějších stránek celého ekosystému. Nemusím složitě přemýšlet, co vařit. Stačí si projít recepty, vybrat si podle nálady a nechat se vést.</p>
-              <div class="tag-row">
-                <span class="tag">Cookidoo</span>
-                <span class="tag">nové nápady</span>
-                <span class="tag">krok za krokem</span>
-              </div>
-            </div>
+            <div class="recipe-content"><h3>Když dojdou nápady, inspirace je hned po ruce</h3><p>To je za mě jedna z nejsilnějších stránek celého ekosystému. Nemusím složitě přemýšlet, co vařit. Stačí si projít recepty, vybrat si podle nálady a nechat se vést.</p><div class="tag-row"><span class="tag">Cookidoo</span><span class="tag">nové nápady</span><span class="tag">krok za krokem</span></div></div>
           </article>
         </div>
       </div>
@@ -851,45 +1108,50 @@
         </div>
 
         <div class="grid-3">
-          <div class="quote">
-            <p>Nejvíc mě baví, že mě Thermomix nezahlcuje. Naopak mi dává větší klid. Když vařím po práci, přesně tohle potřebuji.</p>
-            <strong>— dojem z běžného každodenního používání</strong>
-          </div>
-          <div class="quote">
-            <p>Nejde jen o to, co všechno umí. Pro mě je důležité hlavně to, že ho opravdu používám. Není to spotřebič, který po týdnu přestane bavit.</p>
-            <strong>— pohled na dlouhodobou praktičnost</strong>
-          </div>
-          <div class="quote">
-            <p>Mám ráda, když kuchyň funguje jednoduše. A přesně tohle TM7 přináší – méně chaosu, méně nádobí a větší chuť si něco dobrého připravit doma.</p>
-            <strong>— shrnutí toho, proč si ho lidé oblíbí</strong>
-          </div>
+          <div class="quote"><p>Nejvíc mě baví, že mě Thermomix nezahlcuje. Naopak mi dává větší klid. Když vařím po práci, přesně tohle potřebuji.</p><strong>— dojem z běžného každodenního používání</strong></div>
+          <div class="quote"><p>Nejde jen o to, co všechno umí. Pro mě je důležité hlavně to, že ho opravdu používám. Není to spotřebič, který po týdnu přestane bavit.</p><strong>— pohled na dlouhodobou praktičnost</strong></div>
+          <div class="quote"><p>Mám ráda, když kuchyň funguje jednoduše. A přesně tohle TM7 přináší – méně chaosu, méně nádobí a větší chuť si něco dobrého připravit doma.</p><strong>— shrnutí toho, proč si ho lidé oblíbí</strong></div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section id="buyfaq" class="section">
       <div class="container">
         <div class="section-head">
-          <div class="section-kicker">Tipy</div>
-          <h2>Drobnosti, které web hezky doplní</h2>
+          <div class="section-kicker">Otázky před koupí</div>
+          <h2>Tohle jsou otázky, které bych si položila jako první</h2>
           <p>
-            Právě tyhle sekce dokážou stránku oživit a udělat z ní místo, kam se člověk rád vrací i později.
+            Tyhle odpovědi jsou záměrně psané lidsky a bez přehnaného přesvědčování. Přesně tak podle mě lidé před koupí přemýšlejí.
           </p>
         </div>
 
-        <div class="grid-3">
-          <article class="tip">
-            <h3>Co vařit jako první</h3>
-            <p>Ideální jsou recepty, na kterých je hezky vidět, co Thermomix umí: krémová polévka, těsto na pizzu, jednoduchá pomazánka nebo dezert.</p>
-          </article>
-          <article class="tip">
-            <h3>Co mě překvapilo nejvíc</h3>
-            <p>Jak rychle se stane běžnou součástí dne. Ze začátku člověk obdivuje funkce, ale později si nejvíc váží pohodlí a jistoty při vaření.</p>
-          </article>
-          <article class="tip">
-            <h3>Pro koho mi dává smysl</h3>
-            <p>Pro lidi, kteří chtějí vařit doma častěji, ale nechtějí trávit zbytečně moc času přípravou a úklidem. A také pro ty, kdo mají rádi inspiraci a nové nápady.</p>
-          </article>
+        <div class="buy-faq-grid">
+          <div class="buy-faq-item"><h3>Opravdu ho budu používat?</h3><p>Pokud vaříš pravidelně a chceš si to doma zjednodušit, pravděpodobně ano. Největší smysl dává lidem, kteří ocení pohodlí, rytmus a inspiraci v běžném týdnu.</p></div>
+          <div class="buy-faq-item"><h3>Co když neumím moc vařit?</h3><p>Právě tehdy může být jeho přínos ještě větší. Vedení krok za krokem dává jistotu i u jídel, do kterých by se člověk jinak možná ani nepustil.</p></div>
+          <div class="buy-faq-item"><h3>Je vhodný i pro rodinu?</h3><p>Za mě ano. Právě v běžném rodinném provozu člověk nejvíc ocení úsporu času, plynulejší přípravu a méně věcí k úklidu.</p></div>
+          <div class="buy-faq-item"><h3>Není to zbytečný luxus?</h3><p>Záleží na tom, jak často vaříš. Pokud kuchyň používáš aktivně, dává mi smysl vnímat TM7 spíš jako investici do pohodlí a pravidelného domácího vaření.</p></div>
+          <div class="buy-faq-item"><h3>Co když mi časem dojdou nápady?</h3><p>Právě tam je velká síla receptové inspirace. Když člověk nechce vařit pořád to samé, je velmi příjemné mít nové nápady ihned po ruce.</p></div>
+          <div class="buy-faq-item"><h3>Je to vhodné i pro úplné začátky?</h3><p>Ano, a možná právě proto působí tak sympaticky. Nepůsobí jako něco složitého, ale jako pomocník, který člověka drží v klidu během celého procesu.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="duvody" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Shrnutí</div>
+          <h2>Proč si podle mě lidé Thermomix oblíbí</h2>
+          <p>
+            Když bych to měla na konci celé stránky shrnout co nejjednodušeji, byly by to právě tyto body.
+          </p>
+        </div>
+
+        <div class="reasons-grid">
+          <div class="reasons-card"><div class="icon">⏱️</div><h3>Šetří čas</h3><p>Nejen při vaření, ale i při přípravě a úklidu kolem.</p></div>
+          <div class="reasons-card"><div class="icon">🧠</div><h3>Snižuje chaos</h3><p>Pomáhá mít v kuchyni větší přehled a klidnější průběh.</p></div>
+          <div class="reasons-card"><div class="icon">🍽️</div><h3>Podporuje domácí vaření</h3><p>Když je vše jednodušší, člověk vaří doma častěji.</p></div>
+          <div class="reasons-card"><div class="icon">💡</div><h3>Dává inspiraci</h3><p>Pomáhá ve chvíli, kdy nejsou nápady nebo chuť vymýšlet.</p></div>
+          <div class="reasons-card"><div class="icon">🤍</div><h3>Působí přirozeně</h3><p>Není to efekt na týden, ale pomocník pro běžný provoz.</p></div>
         </div>
       </div>
     </section>
@@ -905,22 +1167,10 @@
         </div>
 
         <div class="faq">
-          <div class="faq-item">
-            <h3>Je Thermomix TM7 vhodný i pro někoho, kdo nevaří rád?</h3>
-            <p>Za mě ano. Právě lidem, kteří nechtějí složitě přemýšlet nad postupem, může vyhovovat nejvíc. Díky vedení krok za krokem působí celé vaření mnohem klidněji a přístupněji.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Není to jen další spotřebič navíc?</h3>
-            <p>Právě naopak. Jeho síla je v tom, že dokáže nahradit několik běžných pomocníků a zjednodušit práci kolem vaření. To je podle mě jeden z hlavních důvodů, proč si ho lidé tak oblíbí.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Co když mi časem dojdou nápady?</h3>
-            <p>Přesně od toho je skvělé mít po ruce receptovou inspiraci. Když člověk nechce vařit pořád to samé, je příjemné, že nové nápady nemusí složitě hledat jinde.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Hodí se i pro běžné rodinné vaření?</h3>
-            <p>Podle mě ano. Právě u běžného provozu dává největší smysl, protože šetří čas, drží postup a pomáhá mít domácí jídlo i v náročnějších dnech.</p>
-          </div>
+          <div class="faq-item"><h3>Je Thermomix TM7 vhodný i pro někoho, kdo nevaří rád?</h3><p>Za mě ano. Právě lidem, kteří nechtějí složitě přemýšlet nad postupem, může vyhovovat nejvíc. Díky vedení krok za krokem působí celé vaření mnohem klidněji a přístupněji.</p></div>
+          <div class="faq-item"><h3>Není to jen další spotřebič navíc?</h3><p>Právě naopak. Jeho síla je v tom, že dokáže nahradit několik běžných pomocníků a zjednodušit práci kolem vaření. To je podle mě jeden z hlavních důvodů, proč si ho lidé tak oblíbí.</p></div>
+          <div class="faq-item"><h3>Co když mi časem dojdou nápady?</h3><p>Přesně od toho je skvělé mít po ruce receptovou inspiraci. Když člověk nechce vařit pořád to samé, je příjemné, že nové nápady nemusí složitě hledat jinde.</p></div>
+          <div class="faq-item"><h3>Hodí se i pro běžné rodinné vaření?</h3><p>Podle mě ano. Právě u běžného provozu dává největší smysl, protože šetří čas, drží postup a pomáhá mít domácí jídlo i v náročnějších dnech.</p></div>
         </div>
       </div>
     </section>
@@ -928,13 +1178,13 @@
     <section id="kontakt" class="section">
       <div class="container">
         <div class="cta">
-          <h2>Thermomix TM7 na jedné stránce, lidsky a elegantně</h2>
+          <h2>Thermomix TM7 na jedné stránce, lidsky, přehledně a opravdu užitečně</h2>
           <p>
-            Pokud by tahle stránka vznikala do ostrého provozu, dala bych do ní ještě reálné fotky, jemné animace při scrollu, stručný formulář nebo kontaktní blok a třeba i doporučené recepty podle kategorií. Už teď je ale připravená jako moderní a velmi použitelný základ.
+            Do této verze jsem doplnila i obsah, který pomáhá s reálným rozhodováním před koupí – pro koho dává smysl, co nahrazuje, jak vypadá běžný týden používání, co může být nevýhoda a proč je vedení přes displej tak praktické. Po doplnění fotek a případných screenshotů může z této stránky vzniknout velmi silný a důvěryhodný web.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#inspirace">Prohlédnout inspiraci</a>
-            <a class="button secondary" href="#o-tm7">Zpět nahoru</a>
+            <a class="button primary" href="#rozhodovani">Zjistit, jestli je pro mě</a>
+            <a class="button secondary" href="#cookidoo">Podívat se na reálné používání</a>
           </div>
         </div>
       </div>
@@ -943,7 +1193,7 @@
 
   <footer>
     <div class="container">
-      Modernější vizuální verze jednostránkového webu o Thermomixu TM7. Texty zůstávají přirozené, lidské a informačně silné, ale vzhled působí čistěji, lehčeji a současněji.
+      Rozšířená moderní verze jednostránkového webu o Thermomixu TM7. Obsah je psaný lidsky, spokojeně a důvěryhodně tak, aby pomohl hlavně lidem, kteří o nákupu teprve přemýšlejí.
     </div>
   </footer>
 </body>
