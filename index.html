@@ -9,7 +9,7 @@
     :root {
       --bg: #f5f7fb;
       --bg-soft: #eef2f8;
-      --surface: rgba(255,255,255,0.78);
+      --surface: rgba(255,255,255,0.8);
       --surface-strong: #ffffff;
       --text: #162031;
       --muted: #5f6b7c;
@@ -26,10 +26,16 @@
       --radius-lg: 24px;
       --radius-md: 18px;
       --container: 1200px;
+      --section-gap: 56px;
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 110px;
+    }
+
     body {
       margin: 0;
       font-family: Inter, Arial, Helvetica, sans-serif;
@@ -41,8 +47,25 @@
       line-height: 1.65;
     }
 
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid rgba(31,111,255,0.28);
+      outline-offset: 3px;
+      border-radius: 14px;
+    }
 
     .container {
       width: min(var(--container), calc(100% - 32px));
@@ -52,7 +75,7 @@
     .topbar-wrap {
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 100;
       padding-top: 14px;
     }
 
@@ -64,9 +87,10 @@
       padding: 14px 18px;
       border: 1px solid rgba(255,255,255,0.65);
       border-radius: 999px;
-      background: rgba(255,255,255,0.72);
-      backdrop-filter: blur(18px);
+      background: rgba(255,255,255,0.74);
+      backdrop-filter: blur(16px);
       box-shadow: var(--shadow-soft);
+      position: relative;
     }
 
     .brand {
@@ -75,6 +99,7 @@
       gap: 12px;
       font-weight: 800;
       letter-spacing: -0.02em;
+      min-width: 0;
     }
 
     .brand-badge {
@@ -87,25 +112,99 @@
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
       box-shadow: 0 10px 24px rgba(31,111,255,0.28);
       font-size: 1rem;
+      flex-shrink: 0;
     }
 
     .menu {
       display: flex;
-      gap: 18px;
+      gap: 12px;
       flex-wrap: wrap;
       color: var(--muted);
       font-size: 0.95rem;
+      align-items: center;
     }
 
     .menu a {
-      padding: 8px 10px;
+      padding: 8px 12px;
       border-radius: 999px;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .menu a:hover,
+    .menu a.active {
+      color: var(--text);
+      background: rgba(31,111,255,0.10);
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      border: 1px solid rgba(22,32,49,0.08);
+      background: rgba(255,255,255,0.82);
+      color: var(--text);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 4px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .menu-toggle span {
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+      transition: 0.22s ease;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .mobile-panel {
+      display: none;
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(255,255,255,0.72);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .mobile-panel nav {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mobile-panel a {
+      padding: 12px 14px;
+      border-radius: 16px;
+      color: var(--muted);
       transition: 0.2s ease;
     }
 
-    .menu a:hover {
-      color: var(--text);
+    .mobile-panel a:hover,
+    .mobile-panel a.active {
       background: rgba(31,111,255,0.08);
+      color: var(--text);
     }
 
     .button {
@@ -117,26 +216,28 @@
       border-radius: 999px;
       border: 1px solid transparent;
       font-weight: 700;
-      transition: 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
       cursor: pointer;
     }
 
-    .button:hover { transform: translateY(-2px); }
+    .button:hover {
+      transform: translateY(-2px);
+    }
 
     .button.primary {
       color: #fff;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 14px 30px rgba(31,111,255,0.22);
+      box-shadow: 0 14px 30px rgba(31,111,255,0.20);
     }
 
     .button.secondary {
       color: var(--text);
-      background: rgba(255,255,255,0.78);
+      background: rgba(255,255,255,0.84);
       border-color: rgba(22,32,49,0.08);
     }
 
     .hero {
-      padding: 40px 0 34px;
+      padding: 40px 0 38px;
     }
 
     .hero-shell {
@@ -156,7 +257,7 @@
       font-size: 0.88rem;
       font-weight: 700;
       color: var(--accent);
-      background: rgba(255,255,255,0.78);
+      background: rgba(255,255,255,0.80);
       border: 1px solid rgba(31,111,255,0.10);
       box-shadow: var(--shadow-soft);
       margin-bottom: 18px;
@@ -170,16 +271,22 @@
       box-shadow: 0 0 0 6px rgba(31,111,255,0.10);
     }
 
-    h1, h2, h3 { line-height: 1.1; margin: 0 0 14px; }
+    h1, h2, h3 {
+      line-height: 1.1;
+      margin: 0 0 14px;
+    }
+
     h1 {
       font-size: clamp(2.7rem, 5vw, 5.2rem);
       letter-spacing: -0.05em;
       max-width: 12ch;
     }
+
     h2 {
       font-size: clamp(1.8rem, 3vw, 3rem);
       letter-spacing: -0.04em;
     }
+
     h3 {
       font-size: 1.18rem;
       letter-spacing: -0.02em;
@@ -224,20 +331,25 @@
     .buy-faq-item,
     .reasons-card,
     .day-card,
-    .proscons-box {
+    .proscons-box,
+    .contact-card {
       border-radius: var(--radius-lg);
       border: 1px solid rgba(255,255,255,0.72);
       background: var(--surface);
-      backdrop-filter: blur(18px);
-      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-soft);
     }
 
-    .mini-card { padding: 16px; }
+    .mini-card {
+      padding: 16px;
+    }
+
     .mini-label {
       color: var(--muted);
       font-size: 0.85rem;
       margin-bottom: 6px;
     }
+
     .mini-value {
       font-size: 1.15rem;
       font-weight: 800;
@@ -265,7 +377,7 @@
       display: grid;
       place-items: center;
       text-align: center;
-      padding: 28px;
+      padding: 18px;
       color: var(--muted);
       font-weight: 700;
       background:
@@ -286,7 +398,31 @@
       background: radial-gradient(circle, rgba(124,58,237,0.16), transparent 68%);
     }
 
-    .section { padding: 44px 0; }
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      min-height: 500px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 20px;
+      position: relative;
+      z-index: 1;
+      background: #fff;
+    }
+
+    .section {
+      padding: var(--section-gap) 0;
+      position: relative;
+    }
+
+    .section:nth-of-type(even)::before {
+      content: "";
+      position: absolute;
+      inset: 22px 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.28), rgba(255,255,255,0.16));
+      z-index: -1;
+    }
+
     .section-head {
       max-width: 860px;
       margin-bottom: 28px;
@@ -326,7 +462,7 @@
       gap: 18px;
     }
 
-    .card, .tip, .quote, .faq-item, .buy-faq-item, .reasons-card, .day-card {
+    .card, .tip, .quote, .faq-item, .buy-faq-item, .reasons-card, .day-card, .contact-card {
       padding: 24px;
     }
 
@@ -342,8 +478,8 @@
       border-radius: var(--radius-lg);
       border: 1px solid rgba(255,255,255,0.72);
       background: var(--surface);
-      backdrop-filter: blur(18px);
-      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-soft);
     }
 
     .about-photo {
@@ -356,6 +492,7 @@
       color: var(--muted);
       font-weight: 700;
       background: linear-gradient(135deg, rgba(31,111,255,0.12), rgba(124,58,237,0.10));
+      border: 2px dashed rgba(31,111,255,0.18);
     }
 
     .about-badge {
@@ -393,7 +530,17 @@
       color: #314056;
     }
 
-    .card p, .tip p, .quote p, .faq-item p, .buy-faq-item p, .reasons-card p, .day-card p { margin: 0; color: #465163; }
+    .card p,
+    .tip p,
+    .quote p,
+    .faq-item p,
+    .buy-faq-item p,
+    .reasons-card p,
+    .day-card p,
+    .contact-card p {
+      margin: 0;
+      color: #465163;
+    }
 
     .icon {
       width: 50px;
@@ -420,7 +567,9 @@
       box-shadow: var(--shadow-soft);
     }
 
-    .story-box p:last-child { margin-bottom: 0; }
+    .story-box p:last-child {
+      margin-bottom: 0;
+    }
 
     .stats-row {
       display: grid;
@@ -449,7 +598,10 @@
       letter-spacing: -0.03em;
     }
 
-    .decision-box { padding: 26px; }
+    .decision-box {
+      padding: 26px;
+    }
+
     .decision-list {
       display: grid;
       gap: 12px;
@@ -464,10 +616,18 @@
       color: #445062;
     }
 
-    .decision-box.good .decision-item { background: var(--success-soft); }
-    .decision-box.maybe .decision-item { background: var(--danger-soft); }
+    .decision-box.good .decision-item {
+      background: var(--success-soft);
+    }
 
-    .replacement-list { padding: 24px; }
+    .decision-box.maybe .decision-item {
+      background: var(--danger-soft);
+    }
+
+    .replacement-list {
+      padding: 24px;
+    }
+
     .replacement-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -490,7 +650,10 @@
       gap: 22px;
     }
 
-    .timeline-card { padding: 24px; }
+    .timeline-card {
+      padding: 24px;
+    }
+
     .timeline-title {
       font-size: 1rem;
       font-weight: 800;
@@ -511,7 +674,9 @@
       border-bottom: 1px solid rgba(22,32,49,0.06);
     }
 
-    .timeline-step:last-child { border-bottom: 0; }
+    .timeline-step:last-child {
+      border-bottom: 0;
+    }
 
     .timeline-time {
       font-size: 0.9rem;
@@ -523,7 +688,10 @@
       color: #465163;
     }
 
-    .proscons-box { padding: 24px; }
+    .proscons-box {
+      padding: 24px;
+    }
+
     .proscons-note {
       margin-top: 14px;
       padding: 14px 16px;
@@ -532,7 +700,10 @@
       color: #465163;
     }
 
-    .compare-wrap { overflow: hidden; }
+    .compare-wrap {
+      overflow: hidden;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -555,13 +726,17 @@
 
     .recipe-card {
       overflow: hidden;
-      transition: 0.22s ease;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
     }
 
-    .recipe-card:hover { transform: translateY(-4px); }
+    .recipe-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
 
-    .recipe-media {
-      aspect-ratio: 4 / 3;
+    .recipe-media,
+    .step-screen,
+    .media-placeholder {
       display: grid;
       place-items: center;
       text-align: center;
@@ -571,9 +746,16 @@
       background:
         linear-gradient(135deg, rgba(31,111,255,0.10), rgba(124,58,237,0.10)),
         #fff;
+      border: 2px dashed rgba(31,111,255,0.14);
     }
 
-    .recipe-content { padding: 22px; }
+    .recipe-media {
+      aspect-ratio: 4 / 3;
+    }
+
+    .recipe-content {
+      padding: 22px;
+    }
 
     .tag-row {
       display: flex;
@@ -597,7 +779,10 @@
       gap: 22px;
     }
 
-    .cookidoo-step { padding: 24px; }
+    .cookidoo-step {
+      padding: 24px;
+    }
+
     .step-number {
       width: 42px;
       height: 42px;
@@ -615,13 +800,6 @@
       margin-top: 16px;
       min-height: 180px;
       border-radius: 18px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 18px;
-      color: var(--muted);
-      font-weight: 700;
-      background: linear-gradient(135deg, rgba(31,111,255,0.10), rgba(124,58,237,0.08));
     }
 
     .week-grid {
@@ -669,7 +847,9 @@
     }
 
     .faq-item h3,
-    .buy-faq-item h3 { margin-bottom: 10px; }
+    .buy-faq-item h3 {
+      margin-bottom: 10px;
+    }
 
     .buy-faq-grid {
       display: grid;
@@ -690,6 +870,46 @@
 
     .reasons-card .icon {
       margin: 0 auto 12px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 22px;
+    }
+
+    .contact-card {
+      padding: 28px;
+    }
+
+    .contact-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 0;
+    }
+
+    .contact-badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      background: rgba(31,111,255,0.10);
+      color: var(--accent);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .contact-item {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(22,32,49,0.06);
+      color: #445062;
     }
 
     .cta {
@@ -724,6 +944,18 @@
       font-size: 0.95rem;
     }
 
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
     @media (max-width: 1080px) {
       .hero-shell,
       .grid-2,
@@ -737,18 +969,83 @@
       .reasons-grid,
       .week-grid,
       .replacement-grid,
-      .about-me-shell {
+      .about-me-shell,
+      .contact-grid {
         grid-template-columns: 1fr;
       }
 
-      .image-placeholder { min-height: 340px; }
-      h1 { max-width: 100%; }
+      .image-placeholder {
+        min-height: 340px;
+      }
+
+      .hero-image {
+        min-height: 340px;
+      }
+
+      h1 {
+        max-width: 100%;
+      }
     }
 
     @media (max-width: 860px) {
-      .menu { display: none; }
-      .topbar { border-radius: 22px; }
-      .timeline-step { grid-template-columns: 1fr; }
+      .menu,
+      .topbar .button.secondary {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .mobile-panel.open {
+        display: block;
+      }
+
+      .topbar {
+        border-radius: 22px;
+      }
+
+      .timeline-step {
+        grid-template-columns: 1fr;
+      }
+
+      html {
+        scroll-padding-top: 92px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(var(--container), calc(100% - 20px));
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .section {
+        padding: 44px 0;
+      }
+
+      .topbar {
+        padding: 12px 14px;
+      }
+
+      .brand span {
+        font-size: 0.96rem;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero-actions {
+        display: grid;
+      }
+
+      th, td {
+        padding: 14px;
+      }
     }
   </style>
 </head>
@@ -760,7 +1057,8 @@
           <div class="brand-badge">TM</div>
           <span>Thermomix TM7</span>
         </div>
-        <nav class="menu">
+
+        <nav class="menu" aria-label="Hlavní navigace">
           <a href="#o-tm7">O TM7</a>
           <a href="#o-mne">O mně</a>
           <a href="#rozhodovani">Rozhodování</a>
@@ -769,7 +1067,29 @@
           <a href="#inspirace">Inspirace</a>
           <a href="#faq">FAQ</a>
         </nav>
-        <a class="button secondary" href="#kontakt">Zjistit víc</a>
+
+        <div class="topbar-actions">
+          <a class="button secondary" href="#kontakt">Kontakt</a>
+
+          <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Otevřít menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-panel" id="mobileMenu">
+        <nav aria-label="Mobilní navigace">
+          <a href="#o-tm7">O TM7</a>
+          <a href="#o-mne">O mně</a>
+          <a href="#rozhodovani">Rozhodování</a>
+          <a href="#umi">Co umí</a>
+          <a href="#nahrazuje">Co nahradí</a>
+          <a href="#inspirace">Inspirace</a>
+          <a href="#faq">FAQ</a>
+          <a href="#kontakt">Kontakt</a>
+        </nav>
       </div>
     </div>
   </div>
@@ -804,8 +1124,13 @@
 
       <div class="glass-card">
         <div class="image-placeholder">
-          MÍSTO PRO HLAVNÍ OBRÁZEK<br />
-          Thermomix TM7 v moderní kuchyni / čistá lifestyle fotografie / produktový detail
+          <img
+            class="hero-image"
+            src="https://github.com/ozzby1/thermomix/blob/main/thermomix_tm7.jpg?raw=true"
+            alt="Thermomix TM7"
+            loading="eager"
+            fetchpriority="high"
+          />
         </div>
       </div>
     </div>
@@ -1284,14 +1609,35 @@
 
     <section id="kontakt" class="section">
       <div class="container">
-        <div class="cta">
-          <h2>Thermomix TM7 na jedné stránce, lidsky, přehledně a opravdu užitečně</h2>
-          <p>
-            Do této verze jsem doplnila i obsah, který pomáhá s reálným rozhodováním před koupí – pro koho dává smysl, co nahrazuje, jak vypadá běžný týden používání, co může být nevýhoda a proč je vedení přes displej tak praktické. Po doplnění fotek a případných screenshotů může z této stránky vzniknout velmi silný a důvěryhodný web.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#rozhodovani">Zjistit, jestli je pro mě</a>
-            <a class="button secondary" href="#cookidoo">Podívat se na reálné používání</a>
+        <div class="contact-grid">
+          <div class="cta">
+            <h2>Chceš Thermomix TM7 vidět blíž, zeptat se nebo si ho nezávazně prohlédnout?</h2>
+            <p>
+              Tahle stránka vznikla proto, aby Thermomix nepůsobil jako další naleštěný produkt bez reality. Pokud tě zaujal a chceš se zeptat na běžné používání, ukázku v praxi nebo další detaily před rozhodnutím, právě tady je prostor navázat kontakt přirozeně a bez tlaku.
+            </p>
+            <div class="contact-badges">
+              <span class="contact-badge">osobní ukázka</span>
+              <span class="contact-badge">reálné zkušenosti</span>
+              <span class="contact-badge">nezávazné dotazy</span>
+            </div>
+            <div class="hero-actions">
+              <a class="button primary" href="mailto:tvuj@email.cz">Napsat e-mail</a>
+              <a class="button secondary" href="tel:+420123456789">Zavolat</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="section-kicker">Kontakt</div>
+            <h3>Co může následovat dál</h3>
+            <p>
+              Můžeš se ozvat úplně jednoduše. Klidně jen s otázkou, jestli je TM7 pro tvé vaření vůbec vhodný.
+            </p>
+
+            <div class="contact-list">
+              <div class="contact-item">Ukázka Thermomixu v běžném domácím použití</div>
+              <div class="contact-item">Odpovědi na otázky před koupí bez zbytečného tlaku</div>
+              <div class="contact-item">Možnost objednání, pokud ti bude dávat smysl</div>
+            </div>
           </div>
         </div>
       </div>
@@ -1303,5 +1649,48 @@
       Rozšířená moderní verze jednostránkového webu o Thermomixu TM7. Obsah je psaný lidsky, spokojeně a důvěryhodně tak, aby pomohl hlavně lidem, kteří o nákupu teprve přemýšlejí.
     </div>
   </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    const allNavLinks = document.querySelectorAll('.menu a, .mobile-panel a');
+    const sections = document.querySelectorAll('main section[id]');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      mobileMenu.classList.toggle('open');
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    const activateNavLink = () => {
+      let currentId = '';
+      const offset = 140;
+
+      sections.forEach(section => {
+        const top = section.offsetTop - offset;
+        const bottom = top + section.offsetHeight;
+
+        if (window.scrollY >= top && window.scrollY < bottom) {
+          currentId = section.id;
+        }
+      });
+
+      allNavLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
+      });
+    };
+
+    activateNavLink();
+    window.addEventListener('scroll', activateNavLink);
+    window.addEventListener('resize', activateNavLink);
+  </script>
 </body>
 </html>
