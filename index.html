@@ -9,14 +9,14 @@
     :root {
       --bg: #ffffff;
       --bg-soft: #fafaf8;
-      --surface: rgba(255,255,255,0.96);
+      --surface: rgba(255,255,255,0.97);
       --surface-strong: #ffffff;
       --text: #111111;
       --muted: #555555;
       --line: rgba(17,17,17,0.08);
 
-      --accent: #3f6b2f;         /* zelená */
-      --accent-2: #e38b1f;       /* oranžová */
+      --accent: #3f6b2f;
+      --accent-2: #e38b1f;
       --accent-soft: rgba(63,107,47,0.08);
       --accent-soft-2: rgba(227,139,31,0.10);
 
@@ -80,7 +80,10 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      padding-top: 14px;
+      padding-top: 0;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(17,17,17,0.08);
     }
 
     .topbar {
@@ -88,12 +91,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 18px;
-      padding: 16px 20px;
-      border: 1px solid rgba(17,17,17,0.06);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.94);
-      backdrop-filter: blur(14px);
-      box-shadow: var(--shadow-soft);
+      padding: 14px 0;
       position: relative;
     }
 
@@ -101,6 +99,7 @@
       display: flex;
       align-items: center;
       min-width: 0;
+      flex-shrink: 0;
     }
 
     .brand-logo-large {
@@ -117,11 +116,12 @@
       color: var(--muted);
       font-size: 0.96rem;
       align-items: center;
+      justify-content: center;
     }
 
     .menu a {
       padding: 8px 12px;
-      border-radius: 999px;
+      border-radius: 10px;
       transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
     }
 
@@ -135,22 +135,22 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      flex-shrink: 0;
     }
 
     .menu-toggle {
       display: none;
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
       border: 1px solid rgba(17,17,17,0.08);
-      background: rgba(255,255,255,0.95);
+      background: rgba(255,255,255,0.98);
       color: var(--text);
       cursor: pointer;
       align-items: center;
       justify-content: center;
       flex-direction: column;
       gap: 4px;
-      box-shadow: var(--shadow-soft);
     }
 
     .menu-toggle span {
@@ -175,13 +175,8 @@
 
     .mobile-panel {
       display: none;
-      margin-top: 12px;
-      padding: 14px;
-      border-radius: 24px;
-      background: rgba(255,255,255,0.96);
-      border: 1px solid rgba(17,17,17,0.06);
-      backdrop-filter: blur(14px);
-      box-shadow: var(--shadow-soft);
+      padding: 0 0 16px;
+      background: rgba(255,255,255,0.98);
     }
 
     .mobile-panel nav {
@@ -191,7 +186,7 @@
 
     .mobile-panel a {
       padding: 12px 14px;
-      border-radius: 16px;
+      border-radius: 10px;
       color: var(--muted);
       transition: 0.2s ease;
     }
@@ -330,7 +325,9 @@
     .reasons-card,
     .day-card,
     .proscons-box,
-    .contact-card {
+    .contact-card,
+    .process-wrap,
+    .process-card {
       border-radius: var(--radius-lg);
       border: 1px solid rgba(17,17,17,0.06);
       background: var(--surface);
@@ -460,7 +457,7 @@
       gap: 18px;
     }
 
-    .card, .tip, .quote, .faq-item, .buy-faq-item, .reasons-card, .day-card, .contact-card {
+    .card, .tip, .quote, .faq-item, .buy-faq-item, .reasons-card, .day-card, .contact-card, .process-card {
       padding: 24px;
     }
 
@@ -534,7 +531,8 @@
     .buy-faq-item p,
     .reasons-card p,
     .day-card p,
-    .contact-card p {
+    .contact-card p,
+    .process-card p {
       margin: 0;
       color: #444444;
     }
@@ -620,6 +618,43 @@
 
     .decision-box.maybe .decision-item {
       background: var(--danger-soft);
+    }
+
+    .process-wrap {
+      padding: 28px;
+      background: linear-gradient(135deg, rgba(63,107,47,0.04), rgba(227,139,31,0.05)), #fff;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .process-card {
+      position: relative;
+    }
+
+    .process-step {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      margin-bottom: 16px;
+      box-shadow: 0 10px 20px rgba(63,107,47,0.14);
+    }
+
+    .process-note {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(63,107,47,0.06);
+      color: #333333;
+      font-weight: 600;
     }
 
     .replacement-list {
@@ -958,7 +993,8 @@
       .week-grid,
       .replacement-grid,
       .about-me-shell,
-      .contact-grid {
+      .contact-grid,
+      .process-grid {
         grid-template-columns: 1fr;
       }
 
@@ -989,10 +1025,6 @@
         display: block;
       }
 
-      .topbar {
-        border-radius: 22px;
-      }
-
       .timeline-step {
         grid-template-columns: 1fr;
       }
@@ -1003,6 +1035,10 @@
 
       .brand-logo-large {
         height: 58px;
+      }
+
+      .topbar {
+        padding: 12px 0;
       }
     }
 
@@ -1017,10 +1053,6 @@
 
       .section {
         padding: 44px 0;
-      }
-
-      .topbar {
-        padding: 12px 14px;
       }
 
       .brand-logo-large {
@@ -1236,31 +1268,49 @@
     <section id="cas" class="section">
       <div class="container">
         <div class="section-head">
-          <div class="section-kicker">Čas a pohodlí</div>
-          <h2>Jak vypadá běžné vaření bez Thermomixu a s ním</h2>
+          <div class="section-kicker">Jak probíhá vaření</div>
+          <h2>Jak vypadá vaření s Thermomixem TM7 v běžném dni</h2>
           <p>
-            Nejde jen o minuty na hodinách. Jde i o pocit, kolik pozornosti, přepínání a nepořádku kolem vaření člověk musí řešit.
+            Na tom mě baví hlavně plynulost. Nejde jen o úsporu času, ale i o to, že člověk nemusí tolik přepínat mezi jednotlivými kroky, nádobím a pomocníky. Vaření pak působí klidněji a přirozeněji.
           </p>
         </div>
 
-        <div class="timeline-grid">
-          <div class="timeline-card">
-            <div class="timeline-title">Běžné vaření bez Thermomixu</div>
-            <div class="timeline-list">
-              <div class="timeline-step"><div class="timeline-time">0–10 min</div><div class="timeline-text">vytáhnout váhu, mixér, prkénko, hrnec a připravit suroviny</div></div>
-              <div class="timeline-step"><div class="timeline-time">10–25 min</div><div class="timeline-text">krájení, sekání, míchání a hlídání několika kroků zároveň</div></div>
-              <div class="timeline-step"><div class="timeline-time">25–45 min</div><div class="timeline-text">vaření, mixování, dochucení a přendávání mezi nádobami</div></div>
-              <div class="timeline-step"><div class="timeline-time">45+ min</div><div class="timeline-text">úklid více věcí a pocit, že i jednoduché jídlo bylo docela velká akce</div></div>
+        <div class="process-wrap">
+          <div class="process-grid">
+            <div class="process-card">
+              <div class="process-step">1</div>
+              <h3>Začátek je rychlý a bez zmatku</h3>
+              <p>
+                Připravím si základní suroviny a rovnou začnu. Nemusím vytahovat zvlášť váhu, mixér, sekáček a další věci. Už jen tenhle začátek dělá velký rozdíl, protože kuchyň nepůsobí přeplněně a člověk má pocit, že všechno běží jednodušeji.
+              </p>
+              <div class="process-note">Méně věcí na lince = klidnější start vaření.</div>
             </div>
-          </div>
 
-          <div class="timeline-card">
-            <div class="timeline-title">Vaření s Thermomixem TM7</div>
-            <div class="timeline-list">
-              <div class="timeline-step"><div class="timeline-time">0–5 min</div><div class="timeline-text">připravit suroviny a rovnou je vážit při práci</div></div>
-              <div class="timeline-step"><div class="timeline-time">5–15 min</div><div class="timeline-text">nechat se vést receptem a neřešit tolik drobných kroků okolo</div></div>
-              <div class="timeline-step"><div class="timeline-time">15–30 min</div><div class="timeline-text">míchat, sekat, vařit nebo mixovat v jednom zařízení</div></div>
-              <div class="timeline-step"><div class="timeline-time">30+ min</div><div class="timeline-text">méně nádobí, menší chaos a celkově klidnější pocit z vaření</div></div>
+            <div class="process-card">
+              <div class="process-step">2</div>
+              <h3>Postup drží pohromadě</h3>
+              <p>
+                Když vařím podle receptu, Thermomix mě vede krok za krokem. Nemusím odbíhat k telefonu ani přemýšlet, co přesně bude následovat. U nových jídel je to velká úleva a i u těch známých mám pocit většího pořádku v celém procesu.
+              </p>
+              <div class="process-note">Příjemné hlavně ve dnech, kdy nechci vařit „na sílu“.</div>
+            </div>
+
+            <div class="process-card">
+              <div class="process-step">3</div>
+              <h3>Jedno zařízení zvládne víc kroků za sebou</h3>
+              <p>
+                Sekání, míchání, vaření, mixování nebo příprava těsta navazují přirozeně na sebe. Nemám pocit, že pořád něco přendávám nebo hlídám na více místech zároveň. Právě to je za mě jeden z největších praktických rozdílů při běžném používání.
+              </p>
+              <div class="process-note">Vaření pak nepůsobí roztříštěně, ale souvisle.</div>
+            </div>
+
+            <div class="process-card">
+              <div class="process-step">4</div>
+              <h3>Na konci zůstává menší chaos</h3>
+              <p>
+                Když je jídlo hotové, nebývá kolem tolik nádobí a nepořádku. To je věc, kterou člověk ocení hlavně večer nebo v pracovních dnech, kdy nechce po vaření řešit další dlouhý úklid. Celkový dojem je prostě lehčí a méně unavující.
+              </p>
+              <div class="process-note">Nejde jen o rychlost, ale i o lepší pocit z celého vaření.</div>
             </div>
           </div>
         </div>
