@@ -330,6 +330,69 @@
       padding: 24px;
     }
 
+    .about-me-shell {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .about-me-card {
+      padding: 28px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255,255,255,0.72);
+      background: var(--surface);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .about-photo {
+      min-height: 100%;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 24px;
+      color: var(--muted);
+      font-weight: 700;
+      background: linear-gradient(135deg, rgba(31,111,255,0.12), rgba(124,58,237,0.10));
+    }
+
+    .about-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(31,111,255,0.10);
+      color: var(--accent);
+      font-size: 0.84rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .about-points {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .about-point {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(22,32,49,0.06);
+      color: #445062;
+    }
+
+    .about-cta {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(31,111,255,0.10), rgba(124,58,237,0.10));
+      color: #314056;
+    }
+
     .card p, .tip p, .quote p, .faq-item p, .buy-faq-item p, .reasons-card p, .day-card p { margin: 0; color: #465163; }
 
     .icon {
@@ -673,7 +736,8 @@
       .buy-faq-grid,
       .reasons-grid,
       .week-grid,
-      .replacement-grid {
+      .replacement-grid,
+      .about-me-shell {
         grid-template-columns: 1fr;
       }
 
@@ -698,6 +762,7 @@
         </div>
         <nav class="menu">
           <a href="#o-tm7">O TM7</a>
+          <a href="#o-mne">O mně</a>
           <a href="#rozhodovani">Rozhodování</a>
           <a href="#umi">Co umí</a>
           <a href="#nahrazuje">Co nahradí</a>
@@ -765,6 +830,48 @@
             <p>
               Zároveň mi vyhovuje, že působí moderně a čistě. Není to typ spotřebiče, který bych schovávala do skříňky. Na lince vypadá hezky, používá se příjemně a člověk má chuť ho zapnout i ve chvíli, kdy by dřív sáhl po něčem hotovém.
             </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="o-mne" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">O mně</div>
+          <h2>Kdo za touto stránkou stojí</h2>
+          <p>
+            Chtěla jsem, aby na webu bylo i osobní doporučení od někoho, kdo Thermomix opravdu používá každý den a ví, co od něj může člověk čekat v běžném životě.
+          </p>
+        </div>
+
+        <div class="about-me-shell">
+          <div class="about-me-card">
+            <div class="about-badge">Spokojená uživatelka Thermomixu</div>
+            <h3>Thermomix je součástí mé kuchyně každý den</h3>
+            <p>
+              Jsem velice spokojená uživatelka Thermomixu, se kterým vařím denně. Postupně se stal přirozenou součástí mého vaření a dnes si bez něj spoustu běžných jídel ani neumím představit. Vyhovuje mi jeho jednoduchost, praktičnost i to, jak moc dokáže zpříjemnit každodenní provoz v kuchyni.
+            </p>
+            <p>
+              Jsem s ním natolik spokojená, že jsem se rozhodla tento úžasný robot šířit dál. Ne stylem nátlaku nebo přehnaných slibů, ale lidsky – ukázat ho takový, jaký je při opravdovém používání doma.
+            </p>
+
+            <div class="about-points">
+              <div class="about-point">Thermomix je u mě možné osobně vidět a vyzkoušet.</div>
+              <div class="about-point">Ráda ukážu, jak s ním běžně vařím a co mi v kuchyni nejvíc usnadňuje.</div>
+              <div class="about-point">Pokud tě zaujme, je u mě možné Thermomix i objednat.</div>
+            </div>
+
+            <div class="about-cta">
+              Pokud hledáš někoho, kdo ti Thermomix ukáže bez zbytečného tlaku, přirozeně a z vlastní zkušenosti, právě to je smysl této stránky.
+            </div>
+          </div>
+
+          <div class="about-me-card">
+            <div class="about-photo">
+              MÍSTO PRO TVOU FOTKU<br />
+              portrét / fotka s Thermomixem / moment z vaření
+            </div>
           </div>
         </div>
       </div>
