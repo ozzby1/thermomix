@@ -1696,6 +1696,19 @@
   </footer>
 
   <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
+    window.addEventListener('load', () => {
+      if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 0);
+    });
+
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileLinks = mobileMenu.querySelectorAll('a');
